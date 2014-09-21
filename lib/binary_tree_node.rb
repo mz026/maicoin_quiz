@@ -6,13 +6,17 @@ class BinaryTreeNode
     def height
       0
     end
+
+    def to_a
+      nil
+    end
   end
 
-  @@null_node = NullNode.new
+  NULL = NullNode.new
 
   def initialize value
     @value = value
-    @left = @right = @@null_node
+    @left = @right = NULL
   end
 
   def height
@@ -34,4 +38,7 @@ class BinaryTreeNode
     @right = node
   end
 
+  def to_a
+    [ value, left.to_a, right.to_a ]
+  end
 end
