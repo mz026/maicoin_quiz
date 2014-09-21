@@ -1,5 +1,6 @@
 class LinkedList
   class Node
+    attr_accessor :next
     def initialize value
       @value = value
     end

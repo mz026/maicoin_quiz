@@ -15,4 +15,16 @@ describe LinkedList::Node do
       expect(node.to_s).to eq(value.to_s)
     end
   end
+
+  describe '#next' do
+    let(:value) { 1234 }
+    let(:node) { LinkedList::Node.new value }
+
+    it "can read/assign attr `next`" do
+      next_node = double(:next_node)
+
+      node.next = next_node
+      expect(node.next).to eq(next_node)
+    end
+  end
 end
