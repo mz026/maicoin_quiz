@@ -17,3 +17,6 @@ This folder includes question solvers, each question is solved by a class in a f
 ### `spec` folder:
 This folder includes unit tests of all classes. 
 Tests of classes in `lib` and `models` are placed in `spec/lib` and `spec/model`, respectively.
+
+## Testing:
+run all unit tests by `$ bundle exec rspec spec/ --format d`
