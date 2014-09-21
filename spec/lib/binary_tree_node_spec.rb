@@ -10,19 +10,51 @@ describe BinaryTreeNode do
     end
   end
 
-  shared_examples "ensure_attr_accessor" do |attr_name|
-    describe "##{attr_name}" do
-      it "accepts read/write opeartions as an accessor" do
-        to_be_assigned = double(:to_be_assigned)
+  describe '#left=(left_node)' do
+    it "assigns value to left" do
+      left = BinaryTreeNode.new (value - 1)
+      node.left = left
 
-        node.send("#{attr_name}=", to_be_assigned)
-        expect(node.send(attr_name)).to eq(to_be_assigned)
-      end
+      expect(node.left).to eq(left)
+    end
+
+    it "raises if left_node.value > self.value " do
+      left = BinaryTreeNode.new (value + 1)
+      expect {
+        node.left = left
+      }.to raise_error(BinaryTreeNode::InvalidNodeException)
+    end
+
+    it "raises if left_node.value = self.value " do
+      left = BinaryTreeNode.new value
+      expect {
+        node.left = left
+      }.to raise_error(BinaryTreeNode::InvalidNodeException)
     end
   end
 
-  include_examples "ensure_attr_accessor", :left
-  include_examples "ensure_attr_accessor", :right
+  describe '#right=(right_node)' do
+    it "assigns value to right" do
+      right = BinaryTreeNode.new (value + 1)
+      node.right = right
+
+      expect(node.right).to eq(right)
+    end
+
+    it "raises if right_node.value < self.value " do
+      right = BinaryTreeNode.new (value - 1)
+      expect {
+        node.right = right
+      }.to raise_error(BinaryTreeNode::InvalidNodeException)
+    end
+    
+    it "raises if right_node.value = self.value " do
+      right = BinaryTreeNode.new value
+      expect {
+        node.right = right
+      }.to raise_error(BinaryTreeNode::InvalidNodeException)
+    end
+  end
 
   describe '#height' do
     def node_of_val val
