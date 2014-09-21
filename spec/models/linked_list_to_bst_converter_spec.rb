@@ -14,7 +14,6 @@ describe LinkedListToBSTConverter do
   describe '#solve' do
     def create_sorted_list
       list = LinkedList.new
-      # (1..6).each do |i|
       (1..9).each do |i|
         list.add(LinkedList::Node.new i)
       end
