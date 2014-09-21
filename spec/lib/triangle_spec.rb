@@ -35,4 +35,11 @@ describe Triangle do
       expect(triangle.layers).to eq(layer_array)
     end
   end
+
+  describe '#min_path' do
+    let(:triangle) { Triangle.new layer_array }
+    it "returns array of min paths of each layer" do
+      expect(triangle.min_path).to eq([ 1,2,5,2 ])
+    end
+  end
 end
