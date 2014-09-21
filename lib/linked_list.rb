@@ -1,17 +1,12 @@
 class LinkedList
-  def initialize 
-    @index = 0
-    @nodes = []
-  end
-
-  def next
-    current_node = @nodes[@index]
-    @index += 1 if @nodes[@index]  
-
-    current_node
-  end
-
+  attr_reader :first_node
   def add node
-    @nodes << node
+    if @first_node
+      @last_node.next = node
+    else
+      @first_node = node unless @first_node
+    end
+
+    @last_node = node
   end
 end

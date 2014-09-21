@@ -9,28 +9,32 @@ describe LinkedList do
     end
   end
 
-  describe '#next' do
-    it "returns nil when init" do
-      expect(list.next).to be_nil
+  describe '#first_node' do
+    it "returns nil if empty list" do
+      expect(list.first_node).to be_nil
+    end
+
+    it "returns first node if exists" do
+      first_node = double(:first_node)
+      list.add(first_node)
+      expect(list.first_node).to eq(first_node)
     end
   end
 
   describe '#add(node)' do
-    let(:node1) { double(:node1) }
-    let(:node2) { double(:node2) }
+    let(:original_last_node) { double(:original_last_node) }
+    let(:added_node) { double(:added_node) }
 
-    it 'adds the node into list to the tail of list' do
-      expect(list.next).to be_nil
+    it "assigns the node to `first_node` if list is empty" do
+      list.add(added_node)  
 
-      list.add(node1)
-      expect(list.next).to eq(node1)
+      expect(list.first_node).to eq(added_node)
+    end
 
-      list.add(node2)
-      expect(list.next).to eq(node2)
-
-      expect(list.next).to be_nil
+    it "assigns the added_node to be the `next` of last node" do
+      expect(original_last_node).to receive(:next=).with(added_node)
+      list.add(original_last_node)
+      list.add(added_node)
     end
   end
-
-
 end
