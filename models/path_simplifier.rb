@@ -1,6 +1,6 @@
 class PathSimplifier
   def initialize path
-    @path = path
+    @path = @original = path
   end
 
   def solve
@@ -32,4 +32,11 @@ class PathSimplifier
     @path = arr.join('/')
   end
   private :remove_double_dot
+
+  # alternative solution using ruby build-in method
+  def solve_by_ruby_build_in
+    require 'pathname'
+    Pathname.new(@original).cleanpath.to_s
+  end
+  
 end

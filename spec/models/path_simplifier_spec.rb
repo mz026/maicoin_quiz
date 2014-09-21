@@ -7,20 +7,26 @@ describe PathSimplifier do
     end
   end
 
-  describe '#solve' do
-    it "removes trailing slash" do
-      simplifier = PathSimplifier.new '/with/trailing/slash/'
-      expect(simplifier.solve).to eq('/with/trailing/slash')
+  shared_examples "simplify_path" do |method_name|
+    describe "##{method_name}" do
+      it "removes trailing slash" do
+        simplifier = PathSimplifier.new '/with/trailing/slash/'
+        expect(simplifier.send(method_name)).to eq('/with/trailing/slash')
+      end
+
+      it "removes single dot" do
+        simplifier = PathSimplifier.new('/with/./single/dot')
+        expect(simplifier.send(method_name)).to eq('/with/single/dot')
+      end
+
+      it "removes double dot" do
+        simplifier = PathSimplifier.new('/with/the/../double/dot')
+        expect(simplifier.send(method_name)).to eq('/with/double/dot')
+      end
     end
 
-    it "removes single dot" do
-      simplifier = PathSimplifier.new('/with/./single/dot')
-      expect(simplifier.solve).to eq('/with/single/dot')
-    end
-
-    it "removes double dot" do
-      simplifier = PathSimplifier.new('/with/the/../double/dot')
-      expect(simplifier.solve).to eq('/with/double/dot')
-    end
   end
+
+  include_examples "simplify_path", :solve
+  include_examples "simplify_path", :solve_by_ruby_build_in
 end

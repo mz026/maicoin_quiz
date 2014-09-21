@@ -8,6 +8,9 @@ class LinkedListToBSTConverter
     @list_size = size_to_convert
   end
 
+  # solve:
+  # recursively divide the list into 3 parts: left nodes, middle node ( 1 node only ), right nodes,
+  # which represents the left sub-tree, root-node, right sub-tree, respectively.
   def solve
     if list_size.to_i == 1
       return BinaryTreeNode.new(@node.value), @node
