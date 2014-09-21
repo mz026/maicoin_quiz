@@ -1,4 +1,4 @@
-require 'lib/triangle'
+require 'models/triangle'
 
 describe Triangle do
   let(:layer_array) do
