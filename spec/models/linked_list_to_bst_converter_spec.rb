@@ -11,7 +11,7 @@ describe LinkedListToBSTConverter do
     end
   end
 
-  describe '#solve' do
+  describe '#solve', :demo => true do
     def create_sorted_list
       list = LinkedList.new
       (1..9).each do |i|

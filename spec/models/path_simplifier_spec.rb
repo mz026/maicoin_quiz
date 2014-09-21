@@ -8,7 +8,7 @@ describe PathSimplifier do
   end
 
   shared_examples "simplify_path" do |method_name|
-    describe "##{method_name}" do
+    describe "##{method_name}", :demo => true do
       it "removes trailing slash" do
         simplifier = PathSimplifier.new '/with/trailing/slash/'
         expect(simplifier.send(method_name)).to eq('/with/trailing/slash')

@@ -15,7 +15,7 @@ describe IPRestorer do
     end
   end
 
-  describe '#solve' do
+  describe '#solve', :demo => true do
     it "separates the raw ip by permuations of COMBINATIONS_OF_DIGITS" do
       restorer = IPRestorer.new ip_str_without_dot
 

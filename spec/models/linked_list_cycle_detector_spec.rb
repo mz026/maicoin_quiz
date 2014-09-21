@@ -11,7 +11,7 @@ describe LinkedListCycleDetector do
     end
   end
 
-  describe '#solve' do
+  describe '#solve', :demo => true do
     def create_cyclic_list cycle_begin_node
       list = LinkedList.new
 
