@@ -9,8 +9,9 @@ class LinkedListToBSTConverter
   end
 
   # solve:
-  # recursively divide the list into 3 parts: left nodes, middle node ( 1 node only ), right nodes,
-  # which represents the left sub-tree, root-node, right sub-tree, respectively.
+  # Build the tree from bottom to top
+  # Recursively divide the list into 3 parts: left sub-tree, middle node ( 1 node only ), right sub-tree
+  # until there is only one node left. Link the three part as a tree after the separation.
   def solve
     if list_size.to_i == 1
       return BinaryTreeNode.new(@node.value), @node

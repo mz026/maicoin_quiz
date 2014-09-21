@@ -2,6 +2,8 @@ class BinaryTreeNode
   class InvalidNodeException < Exception; end
   attr_reader :left, :right, :value
 
+  # use NullNode class to deal with leaf node
+  # null object pattern
   class NullNode
     def height
       0
@@ -38,6 +40,9 @@ class BinaryTreeNode
     @right = node
   end
 
+  # to_a:
+  # use an array to represent a tree: [ root_value, left_tree, right_tree ]
+  # so that a leaf node would be represented as [ value, nil, nil ]
   def to_a
     [ value, left.to_a, right.to_a ]
   end

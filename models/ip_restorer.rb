@@ -30,6 +30,9 @@ class IPRestorer
   end
   private :validate
 
+  # solve:
+  # for each separation in COMBINATIONS_OF_DIGITS * permutation, 
+  # separate the raw string by the separation
   def solve
     ips = []
 

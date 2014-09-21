@@ -3,6 +3,8 @@ class LinkedListCycleDetector
     @list = list
   end
 
+  # solve
+  # remember every traversed node and return true when traversing to a visited one
   def solve
     node = @list.first_node
     traversed_nodes = {}

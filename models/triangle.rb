@@ -1,14 +1,7 @@
 class Triangle
   class InvalidArgumentException < Exception; end
 
-  class NullTriangle
-    def min_path
-      []
-    end
-  end
-
   attr_reader :layers
-  NULL_TRIANGLE = NullTriangle.new
 
   def initialize layer_array
     @layers = layer_array
@@ -24,6 +17,35 @@ class Triangle
     end
   end
   private :validate
+
+  # min_path
+  # recursively divide the triangle into 2 children: left and right
+  # and find/compare the min paths of each child
+  # say we have a triangle of
+  #
+  # [
+  #   [1],
+  #   [3,2],
+  #   [10,8,5],
+  #   [6,7,2,9]
+  # ]
+  #
+  # then the left child would be
+  # [
+  #   [3],
+  #   [10,8],
+  #   [6,7,2]
+  # ]
+  #
+  # and the right one would be
+  # [
+  #   [2],
+  #   [8,5],
+  #   [7,2,9]
+  # ]
+  #
+  # when we hit the bottom case in which there are only 2 layers in a triangle,
+  # the min path can be found intuitively by comparing of its two children
 
   def min_path
     if @layers.count == 2
@@ -48,8 +70,6 @@ class Triangle
   private :top
 
   def left_child
-    return NULL_TRIANGLE if @layers.count == 2
-
     sub_arr = @layers[1..-1].map do |layer|
       layer[0..-2]
     end
@@ -59,8 +79,6 @@ class Triangle
   private :left_child
 
   def right_child
-    return NULL_TRIANGLE if @layers.count == 2
-
     sub_arr = @layers[1..-1].map do |layer|
       layer[1..-1]
     end
