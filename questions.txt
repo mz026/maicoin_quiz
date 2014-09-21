@@ -1,0 +1,24 @@
+Questions:
+1. Given a linked list, return the node where the cycle begins. If there is no cycle, return null.
+
+2. Given a triangle, find the minimum path sum from top to bottom. Each step you may move to adjacent numbers on the row below.
+For example, given the following triangle
+[
+     [2],
+    [3,4],
+   [6,5,7],
+  [4,1,8,3]
+]
+The minimum path sum from top to bottom is 11 (i.e., 2 + 3 + 5 + 1 = 11).
+
+3. Given a singly linked list where elements are sorted in ascending order, convert it to a height balanced BST.
+
+4. Given a string containing only digits, restore it by returning all possible valid IP address combinations.
+For example:
+Given "25525511135",
+return ["255.255.11.135", "255.255.111.35"]. (Order does not matter)
+
+5. Given an absolute path for a file (Unix-style), simplify it.
+For example,
+path = "/home/", => "/home"
+path = "/a/./b/../../c/", => "/c"
